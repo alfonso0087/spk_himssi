@@ -22,6 +22,7 @@ class Kriteria extends CI_Controller
     $this->load->view('templates/sidebar', $data);
     $this->load->view('kriteria/index', $data);
     $this->load->view('templates/footer');
+    $this->load->view('kriteria/ubah', $data);
   }
 
   public function tambah()
@@ -46,6 +47,21 @@ class Kriteria extends CI_Controller
       'message',
       '<div class="alert alert-success alert-dismissible fade show" role="alert">
     Data Kriteria berhasil Dihapus !
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  </div>'
+    );
+    redirect('kriteria');
+  }
+
+  public function ubah()
+  {
+    $this->Kriteria_M->ubahKriteria();
+    $this->session->set_flashdata(
+      'message',
+      '<div class="alert alert-info alert-dismissible fade show" role="alert">
+    Data Kriteria berhasil Diubah !
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

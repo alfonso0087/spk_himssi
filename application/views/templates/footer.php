@@ -21,6 +21,13 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url('vendor'); ?>/dist/js/demo.js"></script>
 
+    <!-- Bootstrap4 Duallistbox -->
+    <script src="<?= base_url('vendor'); ?>/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+    <!-- Select2 -->
+    <script src="<?= base_url('vendor'); ?>/plugins/select2/js/select2.full.min.js"></script>
+    <!-- InputMask -->
+    <script src="<?= base_url('vendor'); ?>/plugins/moment/moment.min.js"></script>
+    <script src="<?= base_url('vendor'); ?>/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
     <!-- DataTables -->
     <script src="<?= base_url('vendor'); ?>/plugins/datatables/jquery.dataTables.js"></script>
     <script src="<?= base_url('vendor'); ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
@@ -29,9 +36,9 @@
     <script>
       $(function() {
         $("#tabelKriteria").DataTable({
-          "paging": true,
+          "paging": false,
           // atur banyak data yang ditampilkan
-          "pageLength": 5,
+          "pageLength": 10,
           "lengthChange": false,
           "autoWidth": false,
           "ordering": false
@@ -43,13 +50,11 @@
           "pageLength": 5,
           "lengthChange": false,
         });
-        $('#example2').DataTable({
+        $('#tabelAlternatif').DataTable({
           "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
+          "ordering": false,
           "info": true,
-          "autoWidth": false,
+          "autoWidth": true,
         });
       });
     </script>

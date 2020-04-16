@@ -7,7 +7,6 @@
         <div class="col-sm-6">
           <h1><?= $judul; ?></h1>
         </div>
-
       </div>
     </div><!-- /.container-fluid -->
   </section>
@@ -17,13 +16,15 @@
     <div class="row pl-3">
       <div class="col lg-10">
 
-        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#kriteriabaru">Tambah Kriteria Baru</a>
+        <a href="" class="btn btn-primary " data-toggle="modal" data-target="#kriteriabaru">
+          <i class="fas fa-plus"></i> Tambah Kriteria Baru</a>
 
         <?= $this->session->flashdata('message'); ?>
 
 
         <table id="tabelKriteria" class="table table-bordered  table-hover">
-          <caption>Jumlah Bobot: <?= $jumlah; ?> </caption>
+          <caption>Jumlah Maksimal Bobot: 10 </caption>
+          <caption>Jumlah Bobot Saat Ini : <?= $jumlah; ?> </caption>
           <thead>
             <tr>
               <th>No</th>
@@ -44,8 +45,8 @@
                 <td><?= $k['attribut']; ?></td>
                 <td><?= $k['bobot']; ?></td>
                 <td>
-                  <a href="" class="badge badge-success">Ubah</a>
-                  <a href="<?= base_url('kriteria/hapus/') . $k['id']; ?>" onclick="return confirm('Data akan dihapus');" class="badge badge-danger">Hapus</a>
+                  <a href="" data-toggle="modal" data-target=".ubahKriteria<?= $k['id']; ?>" class="badge badge-success"><i class="fas fa-fw fa-edit"></i> Ubah</a>
+                  <a href="<?= base_url('kriteria/hapus/') . $k['id']; ?>" onclick="return confirm('Data akan dihapus');" class="badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i> Hapus</a>
                 </td>
               </tr>
               <?php $i++; ?>
@@ -83,19 +84,17 @@
           </div>
           <div class="form-group">
             <label>Attribut : </label>
-            <div class="form-row">
-              <div class="form-check pl-4 col-md-5 ml-auto">
-                <input class="form-check-input" type="radio" name="attribut" id="attribut1" value="benefit">
-                <label class="form-check-label" for="attribut1">
-                  Benefit
-                </label>
-              </div>
-              <div class="form-check col-md-6 ml-auto">
-                <input class="form-check-input" type="radio" name="attribut" id="attribut2" value="cost">
-                <label class="form-check-label" for="attribut2">
-                  Cost
-                </label>
-              </div>
+            <div class="icheck-primary d-inline ml-2">
+              <input type="radio" id="radioPrimary3" name="attribut" value="Benefit">
+              <label for="radioPrimary3">
+                Benefit
+              </label>
+            </div>
+            <div class="icheck-primary d-inline ml-2">
+              <input type="radio" id="radioPrimary2" name="attribut" value="Cost">
+              <label for="radioPrimary2">
+                Cost
+              </label>
             </div>
           </div>
           <div class="form-group">

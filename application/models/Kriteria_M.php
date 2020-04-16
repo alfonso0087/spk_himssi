@@ -7,6 +7,11 @@ class Kriteria_M extends CI_model
     return $this->db->get('kriteria')->result_array();
   }
 
+  public function getKriteriaById($id)
+  {
+    return $this->db->get_where('kriteria', ['id' => $id])->row_array();
+  }
+
   public function sumBobot()
   {
     $this->db->select_sum('bobot');
@@ -34,10 +39,11 @@ class Kriteria_M extends CI_model
   {
     $jumlahB = $this->sumBobot();
     $kode = $this->KodeKriteria();
+    $bobot = $this->input->post('bobot');
 
-    // BELUM SESUAI !!! //
-    // Cek apakah jumlah bobot masoh <10,jika iya, masukkan data, jika tidak, tampilkan error
-    if ($jumlahB >= 10) {
+    // Atur Jumlah nilai Bobot
+    // Cek apakah jumlah bobot masih <10,jika iya masukkan data, jika tidak tampilkan error
+    if ($jumlahB + $bobot > 10) {
       $this->session->set_flashdata(
         'message',
         '<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -53,9 +59,42 @@ class Kriteria_M extends CI_model
         'kode_kriteria' => $kode,
         'nama_kriteria' => $this->input->post('nama_kriteria'),
         'attribut' => $this->input->post('attribut'),
-        'bobot' => $this->input->post('bobot')
+        'bobot' => $bobot
       ];
       $this->db->insert('kriteria', $data);
+    }
+  }
+
+  public function ubahKriteria()
+  {
+    $id = $this->input->post('id');
+    $cek = $this->getKriteriaById($id);
+    $Bbt = $cek['bobot']; //Ambil bobot lamanya
+    $bobot = $this->input->post('bobot'); //Ambil Bobot Barunya
+    $jumlahB = $this->sumBobot();
+
+    if (($jumlahB - $Bbt) + $bobot > 10) {
+      $this->session->set_flashdata(
+        'message',
+        '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+      Jumlah Bobot lebih dari 10, Data Kriteria Gagal diubah !
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>'
+      );
+
+      redirect('kriteria');
+    } else {
+      $data = [
+        'kode_kriteria' => $this->input->post('kode'),
+        'nama_kriteria' => $this->input->post('nama_kriteria'),
+        'attribut' => $this->input->post('attribut'),
+        'bobot' => $bobot
+      ];
+
+      $this->db->where('id', $id);
+      $this->db->update('kriteria', $data);
     }
   }
 

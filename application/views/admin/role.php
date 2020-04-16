@@ -16,7 +16,7 @@
   <section class="content">
     <div class="row pl-3">
       <div class="col-lg-8">
-        <a href="" class="btn btn-primary mb-2" data-toggle="modal" data-target="#penggunabaru">Tambah Pengguna Baru</a>
+        <a href="" class="btn btn-primary mb-2" data-toggle="modal" data-target="#penggunabaru"><i class="fas fa-plus"></i> Tambah Pengguna Baru</a>
 
         <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
         <?= $this->session->flashdata('message'); ?>
@@ -36,9 +36,9 @@
                 <th scope="row"><?= $i; ?></th>
                 <td><?= $r['role']; ?></td>
                 <td>
-                  <a href="<?= base_url('admin/role_access/') . $r['id']; ?>" class="badge badge-info">Akses</a>
-                  <a href="" class="badge badge-success" data-toggle="modal" data-target=".ubahRole<?= $r['id']; ?>">Ubah</a>
-                  <a href="<?= base_url('menu/hapus/') . $r['id']; ?>" class="badge badge-danger" onclick="return confirm('Yakin akan menghapus data Pengguna?');">Hapus</a>
+                  <a href="<?= base_url('admin/role_access/') . $r['id']; ?>" class="badge badge-info"><i class="fas fa-fw fa-user-check"></i> Akses</a>
+                  <a href="" class="badge badge-success" data-toggle="modal" data-target=".ubahRole<?= $r['id']; ?>"><i class="fas fa-fw fa-edit"></i> Ubah</a>
+                  <a href="<?= base_url('menu/hapus/') . $r['id']; ?>" class="badge badge-danger" onclick="return confirm('Yakin akan menghapus data Pengguna?');"><i class="fas fa-fw fa-trash-alt"></i> Hapus</a>
                 </td>
               </tr>
               <?php $i++; ?>

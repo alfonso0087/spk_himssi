@@ -18,14 +18,6 @@ class Panitia_M extends CI_model
       $this->load->library('upload', $config);
 
       if ($this->upload->do_upload('gambar')) {
-        // update nama file di tabelnya
-        // nama gambar lama
-        // $gambar_lama = $data['user']['foto'];
-        // if ($gambar_lama != 'default.jpg') {
-        //   unlink(FCPATH . 'assets/dist/img/profile/' . $gambar_lama);
-        // }
-
-        // nama gambar baru
         $gambar_baru = $this->upload->data('file_name');
         $this->db->set('foto', $gambar_baru);
       } else {
