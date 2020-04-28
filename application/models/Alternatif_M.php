@@ -9,7 +9,7 @@ class Alternatif_M extends CI_model
 
   public function getAlternatifId($id)
   {
-    return $this->db->get_where('alternatif', ['id' => $id])->row_array();
+    return $this->db->get_where('alternatif', ['id_alternatif' => $id])->row_array();
   }
 
   public function KodeAlternatif()
@@ -36,6 +36,14 @@ class Alternatif_M extends CI_model
       'foto' => $this->upload->data('file_name')
     ];
     $this->db->insert('alternatif', $data);
+
+    // ? Memasukkan id_alternatif ke tabel nilai dan kecocokan
+    $id_alternatif = $this->db->insert_id();
+    $parameter = [
+      'id_alternatif' => $id_alternatif
+    ];
+    $this->db->insert('nilai', $parameter);
+    $this->db->insert('kecocokan', $parameter);
   }
 
   public function ubahAlternatif()
@@ -49,12 +57,12 @@ class Alternatif_M extends CI_model
       'prodi' => $this->input->post('prodi'),
       'email' => $this->input->post('email')
     ];
-    $this->db->where('id', $id);
+    $this->db->where('id_alternatif', $id);
     $this->db->update('alternatif', $data);
   }
 
   public function hapusAlternatif($id)
   {
-    $this->db->delete('alternatif', ['id' => $id]);
+    $this->db->delete('alternatif', ['id_alternatif' => $id]);
   }
 }

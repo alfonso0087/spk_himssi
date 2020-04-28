@@ -68,34 +68,34 @@ class Kriteria_M extends CI_model
   public function ubahKriteria()
   {
     $id = $this->input->post('id');
-    $cek = $this->getKriteriaById($id);
-    $Bbt = $cek['bobot']; //Ambil bobot lamanya
+    // $cek = $this->getKriteriaById($id);
+    // $Bbt = $cek['bobot']; //Ambil bobot lamanya
     $bobot = $this->input->post('bobot'); //Ambil Bobot Barunya
-    $jumlahB = $this->sumBobot();
+    // $jumlahB = $this->sumBobot();
 
-    if (($jumlahB - $Bbt) + $bobot > 10) {
-      $this->session->set_flashdata(
-        'message',
-        '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-      Jumlah Bobot lebih dari 10, Data Kriteria Gagal diubah !
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    </div>'
-      );
+    // if (($jumlahB - $Bbt) + $bobot > 10) {
+    //   $this->session->set_flashdata(
+    //     'message',
+    //     '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    //   Jumlah Bobot lebih dari 10, Data Kriteria Gagal diubah !
+    // <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    //   <span aria-hidden="true">&times;</span>
+    // </button>
+    // </div>'
+    //   );
 
-      redirect('kriteria');
-    } else {
-      $data = [
-        'kode_kriteria' => $this->input->post('kode'),
-        'nama_kriteria' => $this->input->post('nama_kriteria'),
-        'attribut' => $this->input->post('attribut'),
-        'bobot' => $bobot
-      ];
+    //   redirect('kriteria');
+    // } else {
+    $data = [
+      'kode_kriteria' => $this->input->post('kode'),
+      'nama_kriteria' => $this->input->post('nama_kriteria'),
+      'attribut' => $this->input->post('attribut'),
+      'bobot' => $bobot
+    ];
 
-      $this->db->where('id', $id);
-      $this->db->update('kriteria', $data);
-    }
+    $this->db->where('id', $id);
+    $this->db->update('kriteria', $data);
+    // }
   }
 
   public function hapusKriteria($id)

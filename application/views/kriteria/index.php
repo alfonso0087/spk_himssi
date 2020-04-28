@@ -23,7 +23,7 @@
 
 
         <table id="tabelKriteria" class="table table-bordered  table-hover">
-          <caption>Jumlah Maksimal Bobot: 10 </caption>
+          <!-- <caption>Jumlah Maksimal Bobot: 10 </caption> -->
           <caption>Jumlah Bobot Saat Ini : <?= $jumlah; ?> </caption>
           <thead>
             <tr>

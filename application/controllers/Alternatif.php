@@ -58,7 +58,7 @@ class Alternatif extends CI_Controller
       $data['judul'] = 'Data Alternatif';
       $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
       $data['alternatif'] = $this->Alternatif_M->getAllAlternatif();
-      $data['kode'] = $this->Alternatif_M->KodeKriteria();
+      $data['kode'] = $this->Alternatif_M->KodeAlternatif();
 
       $this->load->view('templates/header', $data);
       $this->load->view('templates/navbar', $data);

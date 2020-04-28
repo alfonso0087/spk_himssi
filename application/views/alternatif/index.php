@@ -53,11 +53,11 @@
                 <td><?= $a['prodi']; ?></td>
                 <td>
                   <!-- Detail -->
-                  <a href="<?= base_url('alternatif/detail/') . $a['id']; ?>" class="badge badge-info"><i class="fas fa-fw fa-info"></i> Detail</a>
+                  <a href="<?= base_url('alternatif/detail/') . $a['id_alternatif']; ?>" class="badge badge-info"><i class="fas fa-fw fa-info"></i> Detail</a>
                   <!-- Ubah -->
-                  <a href="" data-toggle="modal" data-target=".ubahAlternatif<?= $a['id']; ?>" class="badge badge-success"><i class="fas fa-fw fa-edit"></i> Ubah</a>
+                  <a href="" data-toggle="modal" data-target=".ubahAlternatif<?= $a['id_alternatif']; ?>" class="badge badge-success"><i class="fas fa-fw fa-edit"></i> Ubah</a>
                   <!-- Hapus -->
-                  <a href="<?= base_url('alternatif/hapus/') . $a['id']; ?>" onclick="return confirm('Data Alternatif Akan Dihapus');" class="badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i> Hapus</a>
+                  <a href="<?= base_url('alternatif/hapus/') . $a['id_alternatif']; ?>" onclick="return confirm('Data Alternatif Akan Dihapus');" class="badge badge-danger"><i class="fas fa-fw fa-trash-alt"></i> Hapus</a>
                 </td>
               </tr>
               <?php $i++; ?>

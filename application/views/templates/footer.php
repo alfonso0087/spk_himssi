@@ -1,6 +1,6 @@
     <!-- Footer -->
     <footer class="main-footer">
-      <strong>Copyright &copy; 2020 - <?= date('Y'); ?> <a href="http://adminlte.io">Osnofla.tech</a>.</strong> All rights
+      <strong>Copyright &copy; 2020 - <?= date('Y'); ?> <a href="http://osnofla.tech">Osnofla.tech</a>.</strong> All rights
       reserved.
     </footer>
 

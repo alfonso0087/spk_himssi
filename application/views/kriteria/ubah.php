@@ -1,6 +1,6 @@
 <?php foreach ($kriteria as $k) : ?>
   <div class="modal fade ubahKriteria<?= $k['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="myModalLabel2">Ubah Data Kriteria</h5>
@@ -20,36 +20,34 @@
             </div>
             <!-- Attribut belum sesuai -->
             <div class="form-group">
-              <label>Attribut : </label>
-              <div class="form-row">
-                <?php if ($k['attribut'] == "benefit") : ?>
-                  <div class="icheck-primary d-inline ml-2">
-                    <input type="radio" name="attribut" id="radioPrimary3" value="benefit" checked>
-                    <label class="form-check-label" for="radioPrimary3">
-                      Benefit
-                    </label>
-                  </div>
-                  <div class="icheck-primary d-inline ml-2">
-                    <input type="radio" name="attribut" id="radioPrimary2" value="cost">
-                    <label class="form-check-label" for="radioPrimary2">
-                      Cost
-                    </label>
-                  </div>
-                <?php else : ?>
-                  <div class="icheck-primary d-inline ml-2">
-                    <input type="radio" name="attribut" id="radioPrimary3" value="benefit">
-                    <label class="form-check-label" for="radioPrimary3">
-                      Benefit
-                    </label>
-                  </div>
-                  <div class="icheck-primary d-inline ml-2">
-                    <input type="radio" name="attribut" id="radioPrimary2" value="cost" checked>
-                    <label class="form-check-label" for="radioPrimary2">
-                      Cost
-                    </label>
-                  </div>
-                <?php endif; ?>
-              </div>
+              <label for="attribut">Attribut </label>
+              <?php if ($k['attribut'] == "Benefit") : ?>
+                <div class="icheck-primary d-inline ml-2">
+                  <input type="radio" id="radio1" name="attribut" value="Benefit" checked>
+                  <label for="radio1">
+                    Benefit
+                  </label>
+                </div>
+                <div class="icheck-primary d-inline ml-2">
+                  <input type="radio" id="radio2" name="attribut" value="Cost">
+                  <label for="radio2">
+                    Cost
+                  </label>
+                </div>
+              <?php else : ?>
+                <div class="icheck-primary d-inline ml-2">
+                  <input type="radio" id="radio1" name="attribut" value="Benefit">
+                  <label for="radio1">
+                    Benefit
+                  </label>
+                </div>
+                <div class="icheck-primary d-inline ml-2">
+                  <input type="radio" id="radio2" name="attribut" value="Cost" checked>
+                  <label for="radio2">
+                    Cost
+                  </label>
+                </div>
+              <?php endif; ?>
             </div>
             <div class="form-group">
               <label for="bobot">Bobot Kriteria</label>
@@ -67,9 +65,3 @@
   </div>
 
 <?php endforeach; ?>
-
-<!-- Select2 -->
-<script src="<?= base_url('vendor'); ?>/plugins/select2/js/select2.full.min.js"></script>
-<!-- InputMask -->
-<script src="<?= base_url('vendor'); ?>/plugins/moment/moment.min.js"></script>
-<script src="<?= base_url('vendor'); ?>/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
