@@ -8,6 +8,7 @@ class Panitia extends CI_Controller
     parent::__construct();
     cek_login();
     $this->load->model('Panitia_M');
+    $this->load->model('Laporan_M');
   }
 
   public function index()
@@ -122,5 +123,18 @@ class Panitia extends CI_Controller
         }
       }
     }
+  }
+
+  public function laporan()
+  {
+    $data['judul'] = 'Laporan Perankingan';
+    $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    $data['rank'] = $this->Laporan_M->Final();
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/navbar', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('admin/laporan', $data);
+    $this->load->view('templates/footer');
   }
 }

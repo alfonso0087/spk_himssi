@@ -15,17 +15,16 @@
   <section class="content">
     <div class="row pl-3">
       <div class="col lg-10">
-        <table id="tabelKecocokan" class="table table-bordered  table-hover">
+
+        <?= $this->session->flashdata('message'); ?>
+
+        <table id="tabelKriteria" class="table table-bordered  table-hover">
           <thead>
             <tr>
               <th>No</th>
               <th>Kode Alternatif</th>
               <th>Nama Alternatif</th>
-              <th>C1</th>
-              <th>C2</th>
-              <th>C3</th>
-              <th>C4</th>
-              <th>C5</th>
+              <th>Total Nilai</th>
             </tr>
           </thead>
           <tbody>
@@ -35,16 +34,25 @@
                 <td><?= $i; ?></td>
                 <td><?= $k['kode_alternatif']; ?></td>
                 <td><?= $k['nama']; ?></td>
-                <td><?= $k['C1']; ?></td>
-                <td><?= $k['C2']; ?></td>
-                <td><?= $k['C3']; ?></td>
-                <td><?= $k['C4']; ?></td>
-                <td><?= $k['C5']; ?></td>
+                <!-- Proses Perhitungan tiap kriteria -->
+                <?php
+                $n1 = round($k['C1'] / $maxC1['C1'], 2) * $bobotC1['bobot'];
+                $n2 = round($minC2['C2'] / $k['C2'], 2) * $bobotC2['bobot'];
+                $n3 = round($k['C3'] / $maxC3['C3'], 2) * $bobotC3['bobot'];
+                $n4 = round($k['C4'] / $maxC4['C4'], 2) * $bobotC4['bobot'];
+                $n5 = round($k['C5'] / $maxC5['C5'], 2) * $bobotC5['bobot'];
+                ?>
+                <?php
+                $totalNilai = [$n1, $n2, $n3, $n4, $n5];
+                $total = round(array_sum($totalNilai), 1);
+                ?>
+                <td><?= $total; ?></td>
               </tr>
               <?php $i++; ?>
             <?php endforeach; ?>
           </tbody>
         </table>
+        <a href="" data-toggle="modal" data-target="#Ranking" class="btn btn-primary mt-3">Tampilkan Ranking</a>
       </div>
     </div>
 

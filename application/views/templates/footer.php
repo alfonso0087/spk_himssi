@@ -56,6 +56,28 @@
           "info": true,
           "autoWidth": true,
         });
+        $('#tabelLaporan').DataTable({
+          "paging": false,
+          "searching": false,
+          "ordering": false,
+          "info": true,
+          "autoWidth": true,
+        });
+        $('#tabelKecocokan').DataTable({
+          "paging": false,
+          "searching": false,
+          "ordering": false,
+          "info": true,
+          "autoWidth": true,
+        });
+        $('#tabelNormalisasi').DataTable({
+          "paging": false,
+          "searching": false,
+          "ordering": false,
+          "info": true,
+          "autoWidth": true,
+        });
+
       });
     </script>
 

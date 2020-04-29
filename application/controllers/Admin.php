@@ -9,6 +9,7 @@ class Admin extends CI_Controller
     cek_login();
     $this->load->model('Admin_M');
     $this->load->model('Menu_M');
+    $this->load->model('Laporan_M');
   }
 
   public function index()
@@ -65,5 +66,26 @@ class Admin extends CI_Controller
   </button>
   </div>'
     );
+  }
+
+  public function laporan()
+  {
+    $data['judul'] = 'Laporan Perankingan';
+    $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    $data['rank'] = $this->Laporan_M->Final();
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/navbar', $data);
+    $this->load->view('templates/sidebar', $data);
+    $this->load->view('admin/laporan', $data);
+    $this->load->view('templates/footer');
+  }
+
+  public function cetakLaporan()
+  {
+    $data['judul'] = 'Cetak Laporan';
+    $data['rank'] = $this->Laporan_M->Final();
+
+    $this->load->view('admin/cetakLaporan', $data);
   }
 }

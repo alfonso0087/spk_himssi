@@ -15,7 +15,10 @@
   <section class="content">
     <div class="row pl-3">
       <div class="col lg-10">
-        <table id="tabelKecocokan" class="table table-bordered  table-hover">
+
+        <?= $this->session->flashdata('message'); ?>
+
+        <table id="tabelNormalisasi" class="table table-bordered  table-hover">
           <thead>
             <tr>
               <th>No</th>
@@ -35,11 +38,12 @@
                 <td><?= $i; ?></td>
                 <td><?= $k['kode_alternatif']; ?></td>
                 <td><?= $k['nama']; ?></td>
-                <td><?= $k['C1']; ?></td>
-                <td><?= $k['C2']; ?></td>
-                <td><?= $k['C3']; ?></td>
-                <td><?= $k['C4']; ?></td>
-                <td><?= $k['C5']; ?></td>
+                <!-- Pakai round biar ada 2 angka dibelakang koma. -->
+                <td><?= round($k['C1'] / $maxC1['C1'], 2); ?></td>
+                <td><?= round($minC2['C2'] / $k['C2'], 2); ?></td>
+                <td><?= round($k['C3'] / $maxC3['C3'], 2); ?></td>
+                <td><?= round($k['C4'] / $maxC4['C4'], 2); ?></td>
+                <td><?= round($k['C5'] / $maxC5['C5'], 2); ?></td>
               </tr>
               <?php $i++; ?>
             <?php endforeach; ?>
